@@ -1,7 +1,6 @@
 # Contributing
 
-> **Starter conventions.** These are sensible defaults grounded in current practice.
-> Ratify them with the team and adjust anything marked ⚠ to match Thriwe's actual standard.
+> **Starter conventions** — ratify with the team and adjust as practice evolves.
 
 ## Branches
 
@@ -12,8 +11,8 @@ Never commit to `main` directly. Branch from `main` using:
 ```
 
 - **type**: `feat` · `fix` · `infra` · `chore` · `docs`
-- **TICKET-KEY**: the Jira issue key, e.g. `PLAT-123` ⚠ (use your project's key)
-- example: `feat/PLAT-123-add-redis-cache`
+- **TICKET-KEY**: the Jira issue key, e.g. `PRISM-123`
+- example: `feat/PRISM-123-add-redis-cache`
 
 ## Commits
 
@@ -31,9 +30,9 @@ Keep the subject imperative and under ~72 characters. Reference the ticket in th
 
 1. Open against `main`.
 2. Fill in the PR template.
-3. At least **one approval** ⚠ before merge.
+3. At least **two approvals** before merge.
 4. CI must be green.
-5. **Squash-merge** ⚠ to keep `main` history linear.
+5. **Squash-merge** to keep `main` history linear.
 
 ## Code ownership
 

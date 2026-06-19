@@ -4,14 +4,14 @@
 
 **Do not open a public issue for security problems.**
 
-Email **security@thriwe.com** ⚠ (confirm the correct address) with:
+Email **tech@thriwe.com** with:
 
 - a description of the issue and its impact,
 - steps to reproduce,
 - the affected repository / component.
 
-You will receive an acknowledgement within ⚠ _N_ business days.
+You will receive an acknowledgement within 3 business days.
 
 ## Supported versions
 
-⚠ Document which versions or branches receive security fixes.
+Only the latest deployed `main` is supported; older revisions receive no backported fixes.
