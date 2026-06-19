@@ -1,0 +1,13 @@
+# CODEOWNERS — review routing. Place this file at .github/CODEOWNERS in each repo.
+# Self-own the file (last matching pattern wins) so ownership changes require owner review.
+
+# Default owner for everything in the repo:
+* @Thriwe-2-0/<team>                      # ⚠ replace <team> with the real GitHub team slug
+
+# Protect the ownership file itself:
+/.github/CODEOWNERS @Thriwe-2-0/<team>    # ⚠
+
+# Example path-based routing (uncomment + adjust):
+# /helm/      @Thriwe-2-0/<team>
+# /stacks/    @Thriwe-2-0/<infra-team>
+# *.tf        @Thriwe-2-0/<infra-team>

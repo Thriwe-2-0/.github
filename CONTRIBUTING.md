@@ -2,9 +2,22 @@
 
 > **Starter conventions** — ratify with the team and adjust as practice evolves.
 
+## Repository types
+
+The conventions below are shared by all repos. How a change reaches production differs by type:
+
+| Type | Examples | Reaches production via |
+|------|----------|------------------------|
+| GitOps | `platform-gitops` | Cut a semver tag `vX.Y.Z`; ArgoCD syncs the **highest** tag. `main` is staging — untagged work does not deploy. |
+| IaC | `infra-v2` | `plan` runs in CI via OIDC on PR; **apply is human-gated** — never automated, never by agents. |
+| Container images | `platform-images` | Build + push to ECR by tag; consumed by tag/digest in GitOps values. |
+| Application code | `airflow-dags` | Tagged release consumed downstream (e.g. git-sync into pods). |
+
+Each repo states its own type and release mechanism in its `AGENTS.md` (see below).
+
 ## Branches
 
-Never commit to `main` directly. Branch from `main` using:
+Never commit to `main` directly. Branch from `main`:
 
 ```
 <type>/<TICKET-KEY>-<short-description>
@@ -16,7 +29,7 @@ Never commit to `main` directly. Branch from `main` using:
 
 ## Commits
 
-Follow [Conventional Commits](https://www.conventionalcommits.org/):
+Follow [Conventional Commits](https://www.conventionalcommits.org/) — **scope is the component**:
 
 ```
 <type>(<scope>): <subject>
@@ -24,7 +37,12 @@ Follow [Conventional Commits](https://www.conventionalcommits.org/):
 
 example: `fix(superset): drop QueuePool sizing keys incompatible with NullPool`
 
-Keep the subject imperative and under ~72 characters. Reference the ticket in the body or PR.
+Imperative subject, under ~72 characters. Reference the ticket in the body or PR.
+
+## Releases
+
+Tag releases with semver `vX.Y.Z`. In GitOps repos the highest tag gates deployment, so
+treat a tag as a production release: verify on `main`/staging first, then tag.
 
 ## Pull requests
 
@@ -34,10 +52,21 @@ Keep the subject imperative and under ~72 characters. Reference the ticket in th
 4. CI must be green.
 5. **Squash-merge** to keep `main` history linear.
 
-## Code ownership
+Enforce this with an [organization ruleset](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets)
+(2 required approvals, linear history, no force-push to `main`) where the plan allows.
 
-Define a `CODEOWNERS` file **in each repository** — this cannot be set org-wide.
-Listed owners are auto-requested for review on matching paths.
+## Every repository MUST define
+
+These cannot be defaulted from the `.github` repo — each repo owns its own:
+
+- **`.github/CODEOWNERS`** — review routing; self-own the file so ownership changes need owner
+  review. Start from [`templates/CODEOWNERS`](templates/CODEOWNERS).
+- **`AGENTS.md`** (repo root) — context for AI coding agents. Start from
+  [`templates/AGENTS.md`](templates/AGENTS.md). Keep it short. `CLAUDE.md` should be a **symlink**
+  to `AGENTS.md`, not a copy, so the two never drift:
+  ```
+  ln -s AGENTS.md CLAUDE.md
+  ```
 
 ## Reviews
 

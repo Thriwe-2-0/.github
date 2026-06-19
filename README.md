@@ -15,6 +15,7 @@ GitHub automatically applies the files here to any repository that does **not** 
 | `.github/ISSUE_TEMPLATE/` | Issue forms offered when opening an issue |
 | `SECURITY.md` | Linked from the Security tab of every repo |
 | `profile/README.md` | Rendered on the org's public profile: https://github.com/Thriwe-2-0 |
+| `templates/` | Starters repos copy in (`AGENTS.md`, `CODEOWNERS`) — these can't be auto-defaulted |
 
 ## Precedence
 
@@ -23,5 +24,6 @@ A repository's **own** file always wins. GitHub looks in the consuming repo firs
 
 ## Not defaultable from here
 
-`LICENSE`, repo-level `README.md`, and **`CODEOWNERS`** cannot be defaulted org-wide —
-each repository must define its own. CODEOWNERS in particular is per-repo only.
+`LICENSE`, repo-level `README.md`, **`CODEOWNERS`**, and agent-context files
+(**`AGENTS.md`** / `CLAUDE.md`) cannot be defaulted org-wide — each repo must define its own.
+Use the starters in [`templates/`](templates/).
