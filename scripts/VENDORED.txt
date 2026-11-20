@@ -1,0 +1,1 @@
+update_md_index.py	sha256 214ef1111102afff2d04b4ef8e651519eb2d4823d359d1a2c7356e2b16d1c4bc	vendored 2026-11-20 from the markdown-frontmatter skill; replaced by documentation-standard v2 from Thriwe-2-0/agent-plugins (INFRA-1361 Phase 1)
