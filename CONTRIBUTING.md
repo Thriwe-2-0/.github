@@ -2,7 +2,7 @@
 name: contributing
 description: "Org-wide contribution conventions: repository types, branches, commits, releases, PRs, required files, markdown standard"
 date: "2026-11-20T08:55:46.000Z"
-lastmod: "2026-11-20T08:55:46.000Z"
+lastmod: "2026-11-20T09:00:18.000Z"
 tags:
   - type/reference
   - org/thriwe
@@ -92,10 +92,10 @@ These cannot be defaulted from the `.github` repo — each repo owns its own:
 - **`.github/CODEOWNERS`** — review routing; self-own the file so ownership changes need owner
   review. Start from [`templates/CODEOWNERS`](templates/CODEOWNERS).
 - **`AGENTS.md`** (repo root) — context for AI coding agents. Start from
-  [`templates/AGENTS.md`](templates/AGENTS.md). Keep it short. `CLAUDE.md` should be a **symlink**
-  to `AGENTS.md`, not a copy, so the two never drift:
+  [`templates/AGENTS.md`](templates/AGENTS.md). Keep it short. `CLAUDE.md` is a one-line pointer file
+  whose whole content is `@AGENTS.md`, so the two never drift:
   ```
-  ln -s AGENTS.md CLAUDE.md
+  printf '@AGENTS.md\n' > CLAUDE.md
   ```
 
 ## Markdown standard
