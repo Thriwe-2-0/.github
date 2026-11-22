@@ -2,7 +2,7 @@
 name: contributing
 description: "Org-wide contribution conventions: repository types, branches, commits, releases, PRs, required files, markdown standard"
 date: "2026-11-20T08:55:46.000Z"
-lastmod: "2026-11-20T09:00:18.000Z"
+lastmod: "2026-11-22T23:19:28.000Z"
 tags:
   - type/reference
   - org/thriwe
@@ -25,7 +25,7 @@ weight: 1
   - [Pull requests](#pull-requests) — line 77
   - [Every repository MUST define](#every-repository-must-define) — line 88
   - [Markdown standard](#markdown-standard) — line 101
-  - [Reviews](#reviews) — line 118
+  - [Reviews](#reviews) — line 119
 <!-- toc:end -->
 
 # Contributing
@@ -110,7 +110,8 @@ Every `.md` file in every repository follows one standard (org-wiki ADR 0001, pr
 - **Folder index.** Every folder that holds `.md` files has an `INDEX.md` with one line per file.
   `docs/INDEX.md` is the entry point to a repository's docs.
 - **Exemptions.** Files whose own format forbids these fields: `SKILL.md`, Claude agent and command files,
-  issue and PR templates, and the `CLAUDE.md` pointer.
+  issue and PR templates, the `CLAUDE.md` pointer, and the root `CHANGELOG.md` (plain Keep a Changelog; each
+  release also gets a page in `docs/changelog/` that does follow the rule).
 
 `update_md_index.py FILE --dir-index` writes all three, and `--check` verifies them. The tool and its checker ship
 in the `documentation-standard` skill in `Thriwe-2-0/agent-plugins`.
